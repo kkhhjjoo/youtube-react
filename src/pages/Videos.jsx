@@ -4,18 +4,18 @@ import { useQuery } from '@tanstack/react-query';
 import VideoCard from '../components/VideoCard';
 import axios from 'axios';
 import Youtube from '../api/Youtube';
+import { useYoutubeApi } from '../context/YoutubeApiContext';
 
 export default function Videos() {
   const { keyword } = useParams();
+  const {youtube} = useYoutubeApi();
   const {
     isLoading,
     error,
     data: videos,
   } = useQuery({
     queryKey: ['videos', keyword],
-    queryFn: async () => {
-      const youtube = new Youtube();
-      return youtube.search(keyword);
+    queryFn: async () => {youtube.search(keyword)
       // const response = await axios.get(
       //   `/videos/${keyword ? 'search' : 'popular'}.json`
       // );
