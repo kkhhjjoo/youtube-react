@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class YoutubeCient {
+export default class YoutubeClient {
   constructor() {
     this.httpClient = axios.create({
       baseURL: 'https://www.googleapis.com/youtube/v3',
@@ -12,5 +12,9 @@ export default class YoutubeCient {
   }
   async videos(params) {
     return this.httpClient.get('videos', params);
+  }
+
+  async channels(params) {
+    return this.httpClient.get('channels', params);
   }
 }
