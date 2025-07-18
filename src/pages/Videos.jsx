@@ -23,11 +23,11 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos', keyword],
     queryFn: () => fetchVideos(keyword),
+    staleTime: 1000 * 60 * 1,
   });
 
   return (
     <>
-      
       {isLoading && <p>Loading...</p>}
       {error && <p>Something is wrong 😖</p>}
       {videos && (
